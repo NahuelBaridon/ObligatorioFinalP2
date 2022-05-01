@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace DominioObligatorio
+{
+ public class Plato:IValidacion
+    {
+        public static double PrecioMin { get; set; } = 150;
+        public static int ultimoId { get; set; }
+        public int id { get; set; }
+        public string Nombre { get; set; }
+        public double Precio { get; set; }
+        
+
+        public Plato(string nombre, double precio)
+        {
+            id = ultimoId;
+            ultimoId++;
+            Nombre = nombre;
+            Precio = precio;
+            PrecioMin = PrecioMin;
+        }
+
+        public Plato()
+        {
+
+        }
+        // va en plato o en sistema?
+         public void ModificarPrecioMin(double precio)
+           {
+                Plato.PrecioMin = precio;
+           }
+
+        public bool EsValido()
+        {
+            return EsValido() && !String.IsNullOrEmpty(Nombre) && Precio >=PrecioMin;
+        }
+
+       
+        
+
+    }
+}

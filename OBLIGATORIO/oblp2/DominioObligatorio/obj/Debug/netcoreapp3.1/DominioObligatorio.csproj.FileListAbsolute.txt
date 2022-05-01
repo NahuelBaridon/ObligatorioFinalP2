@@ -1,0 +1,10 @@
+C:\Users\Bari\Desktop\obligatorio\OBLIGATORIO\oblp2\DominioObligatorio\bin\Debug\netcoreapp3.1\DominioObligatorio.deps.json
+C:\Users\Bari\Desktop\obligatorio\OBLIGATORIO\oblp2\DominioObligatorio\bin\Debug\netcoreapp3.1\DominioObligatorio.dll
+C:\Users\Bari\Desktop\obligatorio\OBLIGATORIO\oblp2\DominioObligatorio\bin\Debug\netcoreapp3.1\DominioObligatorio.pdb
+C:\Users\Bari\Desktop\obligatorio\OBLIGATORIO\oblp2\DominioObligatorio\obj\Debug\netcoreapp3.1\DominioObligatorio.csproj.AssemblyReference.cache
+C:\Users\Bari\Desktop\obligatorio\OBLIGATORIO\oblp2\DominioObligatorio\obj\Debug\netcoreapp3.1\DominioObligatorio.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Bari\Desktop\obligatorio\OBLIGATORIO\oblp2\DominioObligatorio\obj\Debug\netcoreapp3.1\DominioObligatorio.AssemblyInfoInputs.cache
+C:\Users\Bari\Desktop\obligatorio\OBLIGATORIO\oblp2\DominioObligatorio\obj\Debug\netcoreapp3.1\DominioObligatorio.AssemblyInfo.cs
+C:\Users\Bari\Desktop\obligatorio\OBLIGATORIO\oblp2\DominioObligatorio\obj\Debug\netcoreapp3.1\DominioObligatorio.csproj.CoreCompileInputs.cache
+C:\Users\Bari\Desktop\obligatorio\OBLIGATORIO\oblp2\DominioObligatorio\obj\Debug\netcoreapp3.1\DominioObligatorio.dll
+C:\Users\Bari\Desktop\obligatorio\OBLIGATORIO\oblp2\DominioObligatorio\obj\Debug\netcoreapp3.1\DominioObligatorio.pdb
