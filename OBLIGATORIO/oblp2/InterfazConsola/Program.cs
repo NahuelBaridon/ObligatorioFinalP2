@@ -47,7 +47,8 @@ namespace InterfazConsola
                     Console.WriteLine("ingrese nuevo precio minimo");
                     double NuevoPrecioMin = Int32.Parse(Console.ReadLine());
                     s.ModificarPrecioMin(NuevoPrecioMin);
-                    
+                    Console.WriteLine("Nuevo precio minimo: " + Plato.PrecioMin);
+                    Console.ReadKey();
                 }
                 else if (opcion.Equals(5))
                 {
@@ -61,10 +62,12 @@ namespace InterfazConsola
                     if (!nMozo.Equals(null))
                     {
                         Console.WriteLine("El mozo fue dado de alta con exito");
+                        Console.ReadKey();
                     }
                     else
                     {
                         Console.WriteLine("No se pudo agregar al mozo, cheque los datos ingresados.");
+                        Console.ReadKey();
                     }
                     
                 }

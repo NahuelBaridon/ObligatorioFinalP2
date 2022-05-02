@@ -27,10 +27,38 @@ namespace DominioObligatorio
         {
 
         }
+        /* public virtual bool EsNumero(string nombre, string apellido)
+         {
+             bool ret = false;
+             int n;
+             bool resultN = Int32.TryParse(nombre, out n);
+             bool resultA = Int32.TryParse(apellido, out n);
+             if (resultN && resultA)
+             {
+                 ret = true;
+             }
+             return ret;
+         } */
+        private bool tieneNumero(string c)
+        {
+            bool ret = false;
+            string numeros = "0123456789";
+            for (int i = 0; i < c.Length && !ret; i++)
+            {
+                for (int n = 0; n < numeros.Length && !ret; n++)
+                {
+                    if (c[i].Equals(numeros[n]))
+                    {
+                        ret = true;
+                    }
+                }
+            }
+            return ret;
+        }
 
         public virtual bool EsValido()
         {
-            return !String.IsNullOrEmpty(Nombre) && !String.IsNullOrEmpty(Apellido);
+            return !String.IsNullOrEmpty(Nombre) && !tieneNumero(Nombre) && !tieneNumero(Apellido) && !String.IsNullOrEmpty(Apellido);
         }
     }
 }

@@ -241,8 +241,9 @@ namespace DominioObligatorio
             string todosLosPlatos = "";
             foreach (Plato p in Platos)
             {
-                todosLosPlatos += $"id:{p.id} nombre:{p.Nombre} precio:{p.Precio}";
-                Console.WriteLine();
+                todosLosPlatos += $"id:{p.id} nombre:{p.Nombre} precio:{p.Precio} {Environment.NewLine}";
+
+
             }
             return todosLosPlatos;
         }
