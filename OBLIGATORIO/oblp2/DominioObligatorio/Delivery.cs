@@ -12,6 +12,15 @@ namespace DominioObligatorio
             Repartidor = repartidor;
             Distancia = distancia;
         }
+        public Delivery()
+        {
+
+        }
+
+        public override string ToString()
+        {
+            return $"Orden:{Platos} Fecha:{Fecha.ToString("yyyy-MM-dd")} Cliente:{Cliente} Distancia:{Distancia} Repartidor:{Repartidor}";
+        }
 
         private List<CantidadPlatos> Platos { get; set; }
 

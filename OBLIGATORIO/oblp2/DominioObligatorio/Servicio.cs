@@ -15,8 +15,17 @@ namespace DominioObligatorio
             Fecha = fecha;
             Cliente = cliente;
         }
+        public Servicio()
+        {
 
-        
+        }
+
+        public override string ToString()
+        {
+            return $"Fecha:{Fecha.ToString("yyyy-MM-dd")} Cliente:{Cliente.Nombre+" "+Cliente.Apellido}";
+        }
+
+
 
         public abstract double calcularPrecio();
 

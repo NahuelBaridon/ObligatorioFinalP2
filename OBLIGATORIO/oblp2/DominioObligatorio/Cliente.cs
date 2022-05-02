@@ -14,11 +14,19 @@ namespace DominioObligatorio
 
         }
 
+        public Cliente()
+        {
+
+        }
+
         public string Email { get; set; }
 
         public string Password { get; set; }
 
-
+        public override string ToString()
+        {
+            return $"Nombre:{Nombre}Apellido:{Apellido} Email:{Email} Password:{Password}";
+        }
 
         public override bool EsValido()
         {

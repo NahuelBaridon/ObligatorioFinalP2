@@ -6,6 +6,12 @@ namespace DominioObligatorio
 {
   public  class Local:Servicio
     {
+        private List<CantidadPlatos> Platos { get; set; }
+        public int NroMesa { get; set; }
+        public Mozo Mozo { get; set; }
+        public int Comenzales { get; set; }
+        public static double PrecioCubierto { get; set; } = 5; //preguntar 
+
         public Local(List<CantidadPlatos> platos, DateTime fecha, Cliente cliente,int nroMeza,Mozo mozo,int comenzales) : base(fecha, cliente)
         {
             NroMesa = nroMeza;
@@ -13,12 +19,16 @@ namespace DominioObligatorio
             Comenzales = comenzales;
            
         }
+        public Local()
+        {
 
-        private List<CantidadPlatos> Platos { get; set; }
-        public int NroMesa { get; set; }
-        public Mozo Mozo { get; set; }
-        public int Comenzales { get; set; }
-        public static double PrecioCubierto { get; set; } = 5; //preguntar 
+        }
+
+
+        public override string ToString()
+        {
+            return $"Orden:{Platos} Fecha:{Fecha.ToString("yyyy-MM-dd")} Cliente:{Cliente} Mesa:{NroMesa} Mozo:{Mozo} Comenzals:{Comenzales}";
+        }
 
         public List<CantidadPlatos> getCarrito()
         {

@@ -14,10 +14,16 @@ namespace DominioObligatorio
             NroFuncionario = ultimoNroFuncionario;
             ultimoNroFuncionario++;
         }
-        protected Mozo()
+        public Mozo()
         {
 
         }
+
+        public override string ToString()
+        {
+            return $"Nombre:{Nombre}Apellido:{Apellido} NroFuncionario:{NroFuncionario}";
+        }
+
 
         public override bool EsValido()
         {

@@ -12,7 +12,16 @@ namespace DominioObligatorio
         public Repartidor(string nombre, string apellido, Vehiculo tipovehiculo) : base(nombre, apellido)
         {
             Tipovehiculo = tipovehiculo;
-        } 
+        }
+        public Repartidor()
+        {
+
+        }
+
+        public override string ToString()
+        {
+            return $"Nombre:{Nombre}Apellido:{Apellido} Vehículo:{Tipovehiculo}";
+        }
 
         public bool EnumValido(int  v)
         {

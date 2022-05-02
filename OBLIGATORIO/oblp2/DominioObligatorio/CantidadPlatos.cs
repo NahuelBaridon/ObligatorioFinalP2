@@ -15,7 +15,14 @@ namespace DominioObligatorio
             Cantidad = cantidad;
         }
 
-        
+        public CantidadPlatos()
+        {
 
+        }
+
+        public override string ToString()
+        {
+            return $"Plato:{Plato.Nombre} Cantidad:{Cantidad}";
+        }
     }
 }

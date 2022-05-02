@@ -13,7 +13,12 @@ namespace DominioObligatorio
         List<Servicio> Servicios = new List<Servicio>();
 
         
-        public List<Cliente> GetClientes() { return Clientes; }
+        public List<Cliente> GetClientes() 
+        {
+            Clientes.Sort();
+            return Clientes; 
+        }
+
         public List<Plato> GetPlatos() { return Platos; }
         public List<Mozo> GetMozos() { return Mozos; }
         public List<Repartidor> GetRepartido() { return Repartidores; }
@@ -25,6 +30,7 @@ namespace DominioObligatorio
         {
             PrecargarDatos();
         }
+
         public void ModificarPrecioMin(double precio)
         {
             Plato.PrecioMin = precio;
