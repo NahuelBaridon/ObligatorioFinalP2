@@ -26,11 +26,7 @@ namespace DominioObligatorio
         {
 
         }
-        // va en plato o en sistema?
-         public void ModificarPrecioMin(double precio)
-           {
-                Plato.PrecioMin = precio;
-           }
+       
 
         public bool EsValido()
         {

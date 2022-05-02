@@ -25,7 +25,10 @@ namespace DominioObligatorio
         {
             PrecargarDatos();
         }
-
+        public void ModificarPrecioMin(double precio)
+        {
+            Plato.PrecioMin = precio;
+        }
         private void PrecargarDatos()
         {
             //PRECARGA DE DATOS
