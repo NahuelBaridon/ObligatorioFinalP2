@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\OBLIGATORIO",
+    "\\OBLIGATORIO\\oblp2",
+    "\\OBLIGATORIO\\oblp2\\DominioObligatorio"
   ],
-  "SelectedNode": "\\DominioObligatorio.sln",
+  "SelectedNode": "\\OBLIGATORIO\\oblp2\\DominioObligatorio\\Cliente.cs",
   "PreviewInSolutionExplorer": false
 }
