@@ -36,6 +36,13 @@ namespace InterfazConsola
                 else if (opcion.Equals(2))
                 {
                     Console.Clear();
+                    Console.WriteLine("Lista de clientes ordenados por Apellido / nombre:");
+                    foreach (Cliente c in s.GetClientes())
+                    {
+                        Console.WriteLine(c.Apellido + " " + c.Nombre);
+                    }
+                    Console.ReadKey();
+                    Console.Clear();
                 }
                 else if (opcion.Equals(3))
                 {

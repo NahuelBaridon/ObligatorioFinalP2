@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DominioObligatorio
 {
-  public class Cliente:Persona
+    public class Cliente : Persona, IComparable<Cliente>
     {
         public Cliente(string nombre, string apellido, string email, string password) : base(nombre, apellido)
         {
@@ -13,7 +14,7 @@ namespace DominioObligatorio
 
         }
 
-        public  string Email { get; set; }
+        public string Email { get; set; }
 
         public string Password { get; set; }
 
@@ -21,7 +22,7 @@ namespace DominioObligatorio
 
         public override bool EsValido()
         {
-            return base.EsValido()&& !String.IsNullOrEmpty(Email) && !String.IsNullOrEmpty(Password);
+            return base.EsValido() && !String.IsNullOrEmpty(Email) && !String.IsNullOrEmpty(Password);
         }
 
         public bool ValidarEmail(string e)
@@ -36,6 +37,34 @@ namespace DominioObligatorio
                 }
             }
             return ret;
+        }
+        public int CompareTo([AllowNull] Cliente other)
+        {
+            if (Apellido.CompareTo(other.Apellido) > 0)
+            {
+                return 1;
+            }
+            else if (Apellido.CompareTo(other.Apellido) < 0)
+            {
+                return -1;
+            }
+            else
+            {
+                if (Nombre.CompareTo(other.Nombre) > 0)
+                {
+                    return 1;
+                }
+                else if (Nombre.CompareTo(other.Nombre) < 0)
+                {
+                    return -1;
+                }
+                else
+                {
+                    return 0;
+
+                }
+
+            }
         }
     }
 }

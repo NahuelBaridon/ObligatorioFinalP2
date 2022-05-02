@@ -28,9 +28,16 @@ namespace DominioObligatorio
         public void ModificarPrecioMin(double precio)
         {
             Plato.PrecioMin = precio;
+            foreach (Plato p in Platos)
+            {
+                if (p.Precio < precio)
+                {
+                    p.Precio = precio;
+                }
+            }
         }
 
-        
+
         private void PrecargarDatos()
         {
             //PRECARGA DE DATOS
@@ -247,7 +254,48 @@ namespace DominioObligatorio
             }
             return todosLosPlatos;
         }
-        public bool validarPaswword(Cliente c)
+
+        public List<Servicio> GetServiciosDelivery(List<Servicio> ss)
+        {
+            List<Servicio> ret = new List<Servicio>();
+            foreach(Servicio s in ss)
+            {
+                if(s is Delivery)
+                {
+                    ret.Add(s);
+                }
+            }
+            return ret;
+        }
+
+        public List<Servicio> GetServiciosDelireysMontoEntreFechas(Repartidor r, DateTime f1, DateTime f2)
+        {
+            if (f1 > f2)
+            {
+                DateTime aux = f1;
+                f1 = f2;
+                f2 = aux;
+
+            }
+
+
+            List<Servicio> ret = new List<Servicio>();
+            foreach (Servicio s in Servicios)
+            {
+                if (s is Delivery && s.Fecha > f1 && s.Fecha < f2)
+                {
+                  //  if(s.Cliente && )
+
+                    ret.Add(s);
+                }
+            }
+            return ret;
+
+
+        }
+         
+
+            public bool validarPaswword(Cliente c)
         {
             bool ret = false;
             if (c.Password.Length >= 6)
