@@ -73,6 +73,7 @@ namespace InterfazConsola
                     Console.Clear();
                     Console.WriteLine("Opcion no valida, el numero ingresado debe estar entre el 1 y el 6");
                 }
+                
 
             }
         }
