@@ -25,6 +25,8 @@ namespace DominioObligatorio
             return Platos;
         }
 
+
+
         public override double calcularPrecio()
         {
             double precioCubierto = PrecioCubierto*Comenzales;
@@ -40,9 +42,11 @@ namespace DominioObligatorio
 
         }
 
+        
+
         public override bool EsValido()
         {
-            return base.EsValido() && Platos.Count>0 && !Mozo.Equals(null) && Comenzales > 0;
+            return base.EsValido() && !Mozo.Equals(null) && Comenzales > 0;
         }
     }
 }

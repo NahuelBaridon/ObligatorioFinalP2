@@ -30,7 +30,7 @@ namespace DominioObligatorio
 
         public bool EsValido()
         {
-            return EsValido() && !String.IsNullOrEmpty(Nombre) && Precio >=PrecioMin;
+            return !String.IsNullOrEmpty(Nombre) && Precio >=PrecioMin;
         }
 
        

@@ -22,7 +22,7 @@ namespace DominioObligatorio
 
         public virtual bool EsValido()
         {
-            return Fecha<=DateTime.Now && !Cliente.Equals(null);
+            return Fecha <= DateTime.Now && !Cliente.Equals(null);
         }
 
 

@@ -30,7 +30,7 @@ namespace DominioObligatorio
 
         public virtual bool EsValido()
         {
-            return EsValido() && !String.IsNullOrEmpty(Nombre) && !String.IsNullOrEmpty(Apellido);
+            return !String.IsNullOrEmpty(Nombre) && !String.IsNullOrEmpty(Apellido);
         }
     }
 }
