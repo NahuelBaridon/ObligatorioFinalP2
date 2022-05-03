@@ -22,7 +22,7 @@ namespace DominioObligatorio
 
         public override string ToString()
         {
-            return $"Plato:{Plato.Nombre} Cantidad:{Cantidad}";
+            return $" Plato:{Plato.Nombre} Cantidad:{Cantidad}";
         }
     }
 }

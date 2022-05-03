@@ -19,7 +19,7 @@ namespace DominioObligatorio
         {
             id = ultimoId;
             ultimoId++;
-            Nombre = nombre;
+            Nombre = nombre.ToLower();
             Apellido = apellido;
         }
 
@@ -33,27 +33,27 @@ namespace DominioObligatorio
             return $"Nombre:{Nombre}Apellido:{Apellido}";
         }
 
-        //private bool tieneNumero(string c)
-        //{
-        //    bool ret = false;
-        //    string numeros = "0123456789";
-        //    for (int i = 0; i < c.Length && !ret; i++)
-        //    {
-        //        for (int n = 0; n < numeros.Length && !ret; n++)
-        //        {
-        //            if (c[i].Equals(numeros[n]))
-        //            {
-        //                ret = true;
-        //            }
-        //        }
-        //    }
-        //    return ret;
-        //}
+        private bool tieneNumero(string c)
+        {
+            bool ret = false;
+            string numeros = "0123456789";
+            for (int i = 0; i < c.Length && !ret; i++)
+            {
+                for (int n = 0; n < numeros.Length && !ret; n++)
+                {
+                    if (c[i].Equals(numeros[n]))
+                    {
+                        ret = true;
+                    }
+                }
+            }
+            return ret;
+        }
 
         public virtual bool EsValido()
         {
-            return !String.IsNullOrEmpty(Nombre) && !String.IsNullOrEmpty(Apellido);
+            return !String.IsNullOrEmpty(Nombre) && !tieneNumero(Nombre) && !tieneNumero(Apellido) && !String.IsNullOrEmpty(Apellido);
         }
-        //!tieneNumero(Nombre) && !tieneNumero(Apellido)
+
     }
 }

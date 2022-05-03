@@ -66,3 +66,20 @@ C:\Users\Bari\Desktop\UltimoObligatorio\OBLIGATORIO\oblp2\InterfazConsola\obj\De
 C:\Users\Bari\Desktop\UltimoObligatorio\OBLIGATORIO\oblp2\InterfazConsola\obj\Debug\netcoreapp3.1\InterfazConsola.dll
 C:\Users\Bari\Desktop\UltimoObligatorio\OBLIGATORIO\oblp2\InterfazConsola\obj\Debug\netcoreapp3.1\InterfazConsola.pdb
 C:\Users\Bari\Desktop\UltimoObligatorio\OBLIGATORIO\oblp2\InterfazConsola\obj\Debug\netcoreapp3.1\InterfazConsola.genruntimeconfig.cache
+C:\Users\fede1_g1zrvfc\OneDrive\Escritorio\ORT ANALISTA PROGRAMADOR\oblp3\OBLIGATORIO\oblp2\InterfazConsola\bin\Debug\netcoreapp3.1\InterfazConsola.exe
+C:\Users\fede1_g1zrvfc\OneDrive\Escritorio\ORT ANALISTA PROGRAMADOR\oblp3\OBLIGATORIO\oblp2\InterfazConsola\bin\Debug\netcoreapp3.1\InterfazConsola.deps.json
+C:\Users\fede1_g1zrvfc\OneDrive\Escritorio\ORT ANALISTA PROGRAMADOR\oblp3\OBLIGATORIO\oblp2\InterfazConsola\bin\Debug\netcoreapp3.1\InterfazConsola.runtimeconfig.json
+C:\Users\fede1_g1zrvfc\OneDrive\Escritorio\ORT ANALISTA PROGRAMADOR\oblp3\OBLIGATORIO\oblp2\InterfazConsola\bin\Debug\netcoreapp3.1\InterfazConsola.runtimeconfig.dev.json
+C:\Users\fede1_g1zrvfc\OneDrive\Escritorio\ORT ANALISTA PROGRAMADOR\oblp3\OBLIGATORIO\oblp2\InterfazConsola\bin\Debug\netcoreapp3.1\InterfazConsola.dll
+C:\Users\fede1_g1zrvfc\OneDrive\Escritorio\ORT ANALISTA PROGRAMADOR\oblp3\OBLIGATORIO\oblp2\InterfazConsola\bin\Debug\netcoreapp3.1\InterfazConsola.pdb
+C:\Users\fede1_g1zrvfc\OneDrive\Escritorio\ORT ANALISTA PROGRAMADOR\oblp3\OBLIGATORIO\oblp2\InterfazConsola\bin\Debug\netcoreapp3.1\DominioObligatorio.dll
+C:\Users\fede1_g1zrvfc\OneDrive\Escritorio\ORT ANALISTA PROGRAMADOR\oblp3\OBLIGATORIO\oblp2\InterfazConsola\bin\Debug\netcoreapp3.1\DominioObligatorio.pdb
+C:\Users\fede1_g1zrvfc\OneDrive\Escritorio\ORT ANALISTA PROGRAMADOR\oblp3\OBLIGATORIO\oblp2\InterfazConsola\obj\Debug\netcoreapp3.1\InterfazConsola.csproj.AssemblyReference.cache
+C:\Users\fede1_g1zrvfc\OneDrive\Escritorio\ORT ANALISTA PROGRAMADOR\oblp3\OBLIGATORIO\oblp2\InterfazConsola\obj\Debug\netcoreapp3.1\InterfazConsola.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fede1_g1zrvfc\OneDrive\Escritorio\ORT ANALISTA PROGRAMADOR\oblp3\OBLIGATORIO\oblp2\InterfazConsola\obj\Debug\netcoreapp3.1\InterfazConsola.AssemblyInfoInputs.cache
+C:\Users\fede1_g1zrvfc\OneDrive\Escritorio\ORT ANALISTA PROGRAMADOR\oblp3\OBLIGATORIO\oblp2\InterfazConsola\obj\Debug\netcoreapp3.1\InterfazConsola.AssemblyInfo.cs
+C:\Users\fede1_g1zrvfc\OneDrive\Escritorio\ORT ANALISTA PROGRAMADOR\oblp3\OBLIGATORIO\oblp2\InterfazConsola\obj\Debug\netcoreapp3.1\InterfazConsola.csproj.CoreCompileInputs.cache
+C:\Users\fede1_g1zrvfc\OneDrive\Escritorio\ORT ANALISTA PROGRAMADOR\oblp3\OBLIGATORIO\oblp2\InterfazConsola\obj\Debug\netcoreapp3.1\InterfazConsola.csproj.CopyComplete
+C:\Users\fede1_g1zrvfc\OneDrive\Escritorio\ORT ANALISTA PROGRAMADOR\oblp3\OBLIGATORIO\oblp2\InterfazConsola\obj\Debug\netcoreapp3.1\InterfazConsola.dll
+C:\Users\fede1_g1zrvfc\OneDrive\Escritorio\ORT ANALISTA PROGRAMADOR\oblp3\OBLIGATORIO\oblp2\InterfazConsola\obj\Debug\netcoreapp3.1\InterfazConsola.pdb
+C:\Users\fede1_g1zrvfc\OneDrive\Escritorio\ORT ANALISTA PROGRAMADOR\oblp3\OBLIGATORIO\oblp2\InterfazConsola\obj\Debug\netcoreapp3.1\InterfazConsola.genruntimeconfig.cache

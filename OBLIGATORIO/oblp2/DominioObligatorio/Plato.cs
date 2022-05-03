@@ -28,7 +28,7 @@ namespace DominioObligatorio
         }
         public override string ToString()
         {
-            return $"Nombre:{Nombre} Precio:{Precio}";
+            return $" Nombre:{Nombre} Precio:{Precio}";
         }
 
         public bool EsValido()

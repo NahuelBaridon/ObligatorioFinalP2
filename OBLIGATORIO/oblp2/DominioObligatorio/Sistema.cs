@@ -31,16 +31,24 @@ namespace DominioObligatorio
             PrecargarDatos();
         }
 
-        public void ModificarPrecioMin(double precio)
+        public bool ModificarPrecioMin(string precio)
         {
-            Plato.PrecioMin = precio;
-            foreach (Plato p in Platos)
+            int n;
+            bool esNum = Int32.TryParse(precio, out n);
+            if (esNum) 
             {
-                if (p.Precio < precio)
+                Int32.Parse(precio);
+                Plato.PrecioMin = Int32.Parse(precio);
+                foreach (Plato p in Platos)
                 {
-                    p.Precio = precio;
+                    if (p.Precio < Int32.Parse(precio))
+                    {
+                        p.Precio = Int32.Parse(precio);
+                    }
                 }
             }
+            return esNum;
+
         }
 
 
@@ -170,34 +178,33 @@ namespace DominioObligatorio
             List<CantidadPlatos> cantidadPlatos10 = new List<CantidadPlatos>();
             CantidadPlatos cantidadDiecinueve = new CantidadPlatos(plato9, 2);
             cantidadPlatos10.Add(cantidadDiecinueve);
-            CantidadPlatos cantidadVeinte= new CantidadPlatos(plato8, 3);
+            CantidadPlatos cantidadVeinte = new CantidadPlatos(plato8, 3);
             cantidadPlatos10.Add(cantidadVeinte);
 
-            Delivery s1d = new Delivery(cantidadPlatos1, new DateTime(2021 - 12 - 3), cliente1, 1, repartidor1);
+            Delivery s1d = new Delivery(cantidadPlatos1, new DateTime(2021,12,3), cliente1, 1, repartidor1);
             AltaDelivery(s1d);
-            Delivery s2d = new Delivery(cantidadPlatos2, new DateTime(2021 - 11 - 4), cliente2, 1, repartidor2);
+            Delivery s2d = new Delivery(cantidadPlatos2, new DateTime(2021,12,8), cliente2, 1, repartidor1);
             AltaDelivery(s2d);
-            Delivery s3d = new Delivery(cantidadPlatos3, new DateTime(2021 - 10 - 5), cliente3, 1, repartidor3);
+            Delivery s3d = new Delivery(cantidadPlatos3, new DateTime(2021,10,5), cliente3, 1, repartidor3);
             AltaDelivery(s3d);
-            Delivery s4d = new Delivery(cantidadPlatos4, new DateTime(2021 - 9 - 6), cliente4, 1, repartidor4);
+            Delivery s4d = new Delivery(cantidadPlatos4, new DateTime(2021,9,6), cliente4, 1, repartidor4);
             AltaDelivery(s4d);
-            Delivery s5d = new Delivery(cantidadPlatos5, new DateTime(2021 - 8 - 7), cliente5, 1, repartidor5);
+            Delivery s5d = new Delivery(cantidadPlatos5, new DateTime(2021,8,7), cliente5, 1, repartidor5);
             AltaDelivery(s5d);
-            Local s6l = new Local(cantidadPlatos6, new DateTime(2022 - 1 - 8), cliente1, 1, mozo1, 6);
+            Local s6l = new Local(cantidadPlatos6, new DateTime(2022,1,8), cliente1, 1, mozo1, 6);
             AltaLocal(s6l);
-            Local s7l = new Local(cantidadPlatos7, new DateTime(2022 - 2 - 9), cliente2, 2, mozo2, 5);
+            Local s7l = new Local(cantidadPlatos7, new DateTime(2022,2,9), cliente2, 2, mozo2, 5);
             AltaLocal(s7l);
-            Local s8l = new Local(cantidadPlatos8, new DateTime(2022 - 3 - 10), cliente3, 3, mozo3, 4);
+            Local s8l = new Local(cantidadPlatos8, new DateTime(2022,3,10), cliente3, 3, mozo3, 4);
             AltaLocal(s8l);
-            Local s9l = new Local(cantidadPlatos9, new DateTime(2022 - 4 - 11), cliente4, 4, mozo4, 3);
+            Local s9l = new Local(cantidadPlatos9, new DateTime(2022,4,11), cliente4, 4, mozo4, 3);
             AltaLocal(s9l);
-            Local s10l = new Local(cantidadPlatos10, new DateTime(2022 - 5 - 1), cliente5, 5, mozo5, 5);
+            Local s10l = new Local(cantidadPlatos10, new DateTime(2022,5,1), cliente5, 5, mozo5, 5);
             AltaLocal(s10l);
 
 
 
         }
-
 
 
         public Cliente AltaCliente(Cliente c) {
@@ -313,7 +320,7 @@ namespace DominioObligatorio
             }
             return ret; 
         }
-        private bool tieneNumero (string c)
+        public bool tieneNumero (string c)
         {
             bool ret = false;
             string numeros = "0123456789";
@@ -348,9 +355,70 @@ namespace DominioObligatorio
             }
             return ret;
         }
+        public List<Delivery> GetDelivery()
+        {
+            List<Delivery> ret = new List<Delivery>();
+            foreach (Servicio ser in Servicios)
+            {
+                if (ser is Delivery)
+                {
+                    Delivery aux = ser as Delivery;
+                    ret.Add(aux);
+                }
+            }
+           return ret;
+
+        }
+
+        public bool EsFecha(string f)
+        {
+            bool ret = false;
+            DateTime d;
+            if(DateTime.TryParse(f, out d))
+            {
+                ret = true;
+            }
+            return ret;
+        }
+        public string MostrarDelivery(List<Delivery> deliverys, string del, DateTime d1, DateTime d2)
+        {    
+                if (d1>d2)
+                {
+                    DateTime aux = d1;
+                    d1 = d2;
+                    d2 = aux;
+                }
+
+                string todosLosDelivery = "";
+                foreach (Delivery d in deliverys)
+                {
+                    if (del.Equals(d.Repartidor.Nombre) && d.Fecha>=d1 && d.Fecha<=d2)
+                    {
+                    todosLosDelivery += $"Delivery:{d} {Environment.NewLine}";
+                    }
+                }
+                return todosLosDelivery;
+            {
+            }
+        }
 
 
-        
+        public List<Local> GetLocal()
+        {
+            List<Local> ret = new List<Local>();
+            foreach (Servicio ser in Servicios)
+            {
+                if (ser is Local)
+                {
+                    Local aux = ser as Local;
+                    ret.Add(aux);
+                }
+            }
+            return ret;
+
+        }
+
+
 
 
 

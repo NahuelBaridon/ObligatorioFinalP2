@@ -11,15 +11,26 @@ namespace DominioObligatorio
             Platos = platos;
             Repartidor = repartidor;
             Distancia = distancia;
+            
         }
         public Delivery()
         {
 
         }
-
+        // probando 
+        public string MostrarPlatos(List<CantidadPlatos> Carrito)
+        {
+            string todosLosPlatos = "";
+            foreach (CantidadPlatos p in Carrito)
+            {
+                todosLosPlatos += $" nombre: {p.Plato.Nombre}  cantidad: {p.Cantidad} -";
+            }
+            return todosLosPlatos;
+        }
+        // probando 
         public override string ToString()
         {
-            return $"Orden:{Platos} Fecha:{Fecha.ToString("yyyy-MM-dd")} Cliente:{Cliente} Distancia:{Distancia} Repartidor:{Repartidor}";
+            return $" {Environment.NewLine} Platos:{MostrarPlatos(Platos)} {Environment.NewLine} Fecha:{Fecha.ToString("yyyy-MM-dd")}  {Environment.NewLine} Cliente:{Cliente} Distancia:{Distancia} Repartidor:{Repartidor}";
         }
 
         private List<CantidadPlatos> Platos { get; set; }

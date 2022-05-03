@@ -10,7 +10,7 @@ namespace DominioObligatorio
         public DateTime Fecha { get; set; }
         public Cliente Cliente { get; set; }
 
-        public Servicio(DateTime fecha, Cliente cliente)
+        public Servicio(DateTime fecha,Cliente cliente)
         {
             Fecha = fecha;
             Cliente = cliente;
@@ -22,8 +22,10 @@ namespace DominioObligatorio
 
         public override string ToString()
         {
-            return $"Fecha:{Fecha.ToString("yyyy-MM-dd")} Cliente:{Cliente.Nombre+" "+Cliente.Apellido}";
+            return $"Fecha:{Fecha} Cliente:{Cliente.Nombre+" "+Cliente.Apellido}";
         }
+
+
 
 
 

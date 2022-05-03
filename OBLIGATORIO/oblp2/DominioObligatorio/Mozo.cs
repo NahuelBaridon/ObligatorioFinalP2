@@ -24,12 +24,13 @@ namespace DominioObligatorio
             return $"Nombre:{Nombre}Apellido:{Apellido} NroFuncionario:{NroFuncionario}";
         }
 
+        
 
         public override bool EsValido()
         {
 
-            return base.EsValido() && !NroFuncionario.Equals(null);
-        }
+            return base.EsValido() &&  !NroFuncionario.Equals(null);
+        } 
 
 
 

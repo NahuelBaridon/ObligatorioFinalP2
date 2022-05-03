@@ -25,7 +25,7 @@ namespace DominioObligatorio
 
         public override string ToString()
         {
-            return $"Nombre:{Nombre}Apellido:{Apellido} Email:{Email} Password:{Password}";
+            return $" Nombre: {Nombre} Apellido: {Apellido} Email: {Email} Password: {Password}";
         }
 
         public override bool EsValido()
