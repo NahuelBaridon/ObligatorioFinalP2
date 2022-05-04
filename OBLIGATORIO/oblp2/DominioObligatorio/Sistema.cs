@@ -9,8 +9,6 @@ namespace DominioObligatorio
         //Listas
         List<Persona> Personas = new List<Persona>(); 
         List<Plato> Platos = new List<Plato>();
-        List<Mozo> Mozos = new List<Mozo>();
-        List<Repartidor> Repartidores = new List<Repartidor>();
         List<Servicio> Servicios = new List<Servicio>();
 
         // Get de listas
