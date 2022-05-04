@@ -71,7 +71,7 @@ namespace InterfazConsola
                     Console.WriteLine("Lista de deliverys entregados por un repartidor en un rango de fechas:");
                     Console.WriteLine("Ingrese el nombre del repartidor a filtrar");
                     string d = Console.ReadLine().ToUpper();
-                    if (!s.TieneNumero(d) && !String.IsNullOrEmpty(d))
+                    if (s.ExisteRepartidor(d))
                     {
                         Console.WriteLine("Ingrese la fecha inicial para el filtro");
                         string s1 = (Console.ReadLine());
@@ -81,7 +81,7 @@ namespace InterfazConsola
                         {
                             DateTime d1 = DateTime.Parse(s1);
                             DateTime d2 = DateTime.Parse(s2);
-                            string filtro = (s.MostrarDelivery(s.GetDeliverys(), d, d1, d2));
+                            string filtro = s.MostrarDeliverys(s.GetDelireysMontoEntreFechas(d, d1, d2));
                             if (!String.IsNullOrEmpty(filtro))
                             {
                                 Console.WriteLine(filtro);

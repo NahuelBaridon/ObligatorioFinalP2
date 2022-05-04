@@ -25,6 +25,13 @@ namespace DominioObligatorio
             return $" Orden: {MostrarPlatos(Platos)} - Fecha: {Fecha} - Cliente: {Cliente}";
         }
 
+        //Get Carrito
+        public List<CantidadPlatos> getCarrito()
+        {
+            return Platos;
+        }
+        //termina Get Carrito
+
         //Stringify del Carrito
         public string MostrarPlatos(List<CantidadPlatos> Carrito)
         {
@@ -36,14 +43,6 @@ namespace DominioObligatorio
             return todosLosPlatos;
         }
         //termina Stringify del Carrito
-
-
-        //Get Carrito
-        public List<CantidadPlatos> getCarrito()
-        {
-            return Platos;
-        }
-        //termina Get Carrito
 
         //firma de Método de cálculo
         public abstract double calcularPrecio();

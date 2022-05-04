@@ -86,12 +86,187 @@ namespace DominioObligatorio
             }
             return ret;
         }
+
+            //Get Deliverys con restricciones
+            public List<Delivery> GetDelireysMontoEntreFechas(string del, DateTime d1, DateTime d2)
+            {
+                List<Delivery> ret = new List<Delivery>();
+                if (d1 > d2)
+                {
+                    DateTime aux = d1;
+                    d1 = d2;
+                    d2 = aux;
+                }
+                foreach (Delivery d in GetDeliverys())
+                {
+                    if (del.Equals(d.Repartidor.Nombre) && (d.Fecha >= d1 && d.Fecha <= d2))
+                    {
+                        ret.Add(d);
+                    }
+                }
+                return ret;
+            }
+            //termina Get Deliverys con restricciones
         //termina Get de listas
 
         public Sistema()
         {
             PrecargarDatos();
         }
+
+        //Altas
+        public Cliente AltaCliente(Cliente c) {
+            if (c.EsValido())
+            {
+                Personas.Add(c as Persona);
+                GetClientes().Add(c);
+                return c;
+            }
+           return null;
+        }
+        public Mozo AltaMozo(Mozo m) {
+            if (m.EsValido())
+            {
+                Personas.Add(m as Persona);
+                GetMozos().Add(m);
+                return m;
+            }
+           return null;
+        }
+        public Repartidor AltaRepartidor(Repartidor r) {
+            if (r.EsValido())
+            {
+                Personas.Add(r as Persona);
+                GetRepartidores().Add(r);
+                return r;
+            }
+           return null;
+        }
+         public Plato AltaPlato(Plato p ) {
+            if (p.EsValido())
+            {
+                Platos.Add(p);
+                return p;
+            }
+           return null;
+        }
+         public Delivery AltaDelivery(Delivery d) {
+            if (d.EsValido())
+            {
+                Servicios.Add(d);
+                return d;
+            }
+           return null;
+          }
+        public Local AltaLocal(Local l)
+        {
+            if (l.EsValido())
+            {
+                Servicios.Add(l);
+                return l;
+            }
+            return null;
+        }
+        //termina Altas
+
+        //Método Modificación
+        public bool ModificarPrecioMin(string precio)
+        {
+            bool ret = false;
+            Plato.PrecioMin = Int32.Parse(precio);
+            foreach (Plato p in Platos)
+            {
+                if (p.Precio < Int32.Parse(precio))
+                {
+                    ret = true;
+                    p.Precio = Int32.Parse(precio);
+                }
+            }
+            return ret; 
+        }
+
+        //Métodos de Validación
+        public bool TieneNumero (string c)
+        {
+            bool ret = false;
+            string numeros = "0123456789";
+            for (int i = 0 ; i < c.Length && !ret ; i++)
+            {
+               for (int n = 0; n < numeros.Length && !ret ; n++)
+                {
+                    if (c[i].Equals(numeros[n])){
+                        ret = true;
+                    }
+                }
+            }
+            return ret;
+        }
+
+        public bool EsFecha(string f)
+        {
+            bool ret = false;
+            DateTime d;
+            if (DateTime.TryParse(f, out d))
+            {
+                ret = true;
+            }
+            return ret;
+        }
+        //termina Métodos de Validación
+
+        //Stringify Lista de Platos
+        public string MostrarPlatos()
+        {
+            string todosLosPlatos = "";
+            foreach (Plato p in Platos)
+            {
+                todosLosPlatos += $" + {p} {Environment.NewLine}";
+
+            }
+            return todosLosPlatos;
+        }
+        //termina Stringify Lista de Platos
+
+        //Stringify Lista de Clientes
+        public string MostrarClientes()
+        {
+            string todosLosClientes = "";
+            foreach (Cliente c in GetClientes())
+            {
+                todosLosClientes += $" + {c} {Environment.NewLine}";
+
+            }
+            return todosLosClientes;
+        }
+        //termina Stringify Lista Clientes
+
+        //Stringify de Lista de Deliverys con restricciones
+        public string MostrarDeliverys(List<Delivery> deliverys)
+        {
+            string todosLosDelivery = "";
+            foreach (Delivery d in deliverys)
+            {
+                todosLosDelivery += $"Delivery:{d} {Environment.NewLine}";
+            }
+            return todosLosDelivery;
+        }
+        //termina Stringify de Lista de Deliverys con restricciones
+        
+        //Método Existe Repartidor
+        public bool ExisteRepartidor(string r)
+        {
+            bool res = false;
+            for(int i=0; i<GetRepartidores().Count && res==false; i++)
+            {
+                string  filtro = GetRepartidores()[i].Nombre.ToUpper();
+                if (filtro.Equals(r.ToUpper()))
+                {
+                    res = true;
+                }
+            }
+            return res;
+        }
+        //termina Método Existe Repartidor
 
         //PRECARGA DE DATOS
         private void PrecargarDatos()
@@ -225,225 +400,28 @@ namespace DominioObligatorio
             //termina Carritos
 
             // Servicios
-            Delivery s1d = new Delivery(cantidadPlatos1, new DateTime(2021,12,3), cliente1, 1, repartidor1);
+            Delivery s1d = new Delivery(cantidadPlatos1, new DateTime(2021, 12, 3), cliente1, 1, repartidor1);
             AltaDelivery(s1d);
-            Delivery s2d = new Delivery(cantidadPlatos2, new DateTime(2021,12,8), cliente2, 2.5, repartidor2);
+            Delivery s2d = new Delivery(cantidadPlatos2, new DateTime(2021, 12, 8), cliente2, 2.5, repartidor2);
             AltaDelivery(s2d);
-            Delivery s3d = new Delivery(cantidadPlatos3, new DateTime(2021,10,5), cliente3, 5, repartidor2);
+            Delivery s3d = new Delivery(cantidadPlatos3, new DateTime(2021, 10, 5), cliente3, 5, repartidor2);
             AltaDelivery(s3d);
-            Delivery s4d = new Delivery(cantidadPlatos4, new DateTime(2021,9,6), cliente4, 8, repartidor4);
+            Delivery s4d = new Delivery(cantidadPlatos4, new DateTime(2021, 9, 6), cliente4, 8, repartidor4);
             AltaDelivery(s4d);
-            Delivery s5d = new Delivery(cantidadPlatos5, new DateTime(2021,8,7), cliente5, 10, repartidor5);
+            Delivery s5d = new Delivery(cantidadPlatos5, new DateTime(2021, 8, 7), cliente5, 10, repartidor5);
             AltaDelivery(s5d);
-            Local s6l = new Local(cantidadPlatos6, new DateTime(2022,1,8), cliente1, 1, mozo1, 6);
+            Local s6l = new Local(cantidadPlatos6, new DateTime(2022, 1, 8), cliente1, 1, mozo1, 6);
             AltaLocal(s6l);
-            Local s7l = new Local(cantidadPlatos7, new DateTime(2022,2,9), cliente2, 2, mozo2, 5);
+            Local s7l = new Local(cantidadPlatos7, new DateTime(2022, 2, 9), cliente2, 2, mozo2, 5);
             AltaLocal(s7l);
-            Local s8l = new Local(cantidadPlatos8, new DateTime(2022,3,10), cliente3, 3, mozo3, 4);
+            Local s8l = new Local(cantidadPlatos8, new DateTime(2022, 3, 10), cliente3, 3, mozo3, 4);
             AltaLocal(s8l);
-            Local s9l = new Local(cantidadPlatos9, new DateTime(2022,4,11), cliente4, 4, mozo4, 3);
+            Local s9l = new Local(cantidadPlatos9, new DateTime(2022, 4, 11), cliente4, 4, mozo4, 3);
             AltaLocal(s9l);
-            Local s10l = new Local(cantidadPlatos10, new DateTime(2022,5,1), cliente5, 5, mozo5, 5);
+            Local s10l = new Local(cantidadPlatos10, new DateTime(2022, 5, 1), cliente5, 5, mozo5, 5);
             AltaLocal(s10l);
             //termina Servicios
 
         }
-
-        //Altas
-        public Cliente AltaCliente(Cliente c) {
-            if (c.EsValido())
-            {
-                Personas.Add(c as Persona);
-                GetClientes().Add(c);
-                return c;
-            }
-           return null;
-        }
-        public Mozo AltaMozo(Mozo m) {
-            if (m.EsValido())
-            {
-                Personas.Add(m as Persona);
-                GetMozos().Add(m);
-                return m;
-            }
-           return null;
-        }
-        public Repartidor AltaRepartidor(Repartidor r) {
-            if (r.EsValido())
-            {
-                Personas.Add(r as Persona);
-                GetRepartidores().Add(r);
-                return r;
-            }
-           return null;
-        }
-         public Plato AltaPlato(Plato p ) {
-            if (p.EsValido())
-            {
-                Platos.Add(p);
-                return p;
-            }
-           return null;
-        }
-         public Delivery AltaDelivery(Delivery d) {
-            if (d.EsValido())
-            {
-                Servicios.Add(d);
-                return d;
-            }
-           return null;
-          }
-        public Local AltaLocal(Local l)
-        {
-            if (l.EsValido())
-            {
-                Servicios.Add(l);
-                return l;
-            }
-            return null;
-        }
-        //termina Altas
-
-
-        
-
-        //Métodos--
-        public bool ModificarPrecioMin(string precio)
-        {
-            int n;
-            bool esNum = Int32.TryParse(precio, out n);
-            if (esNum) 
-            {
-                Plato.PrecioMin = Int32.Parse(precio);
-                foreach (Plato p in Platos)
-                {
-                    if (p.Precio < Int32.Parse(precio))
-                    {
-                        p.Precio = Int32.Parse(precio);
-                    }
-                }
-            }
-            return esNum;
-
-        }
-
-        //Get Deliverys con restricciones
-        public List<Servicio> GetServiciosDelireysMontoEntreFechas(Repartidor r, DateTime f1, DateTime f2)
-        {
-            if (f1 > f2)
-            {
-                DateTime aux = f1;
-                f1 = f2;
-                f2 = aux;
-            }
-
-            List<Servicio> ret = new List<Servicio>();
-            foreach (Servicio s in Servicios)
-            {
-                if (s is Delivery && s.Fecha > f1 && s.Fecha < f2)
-                {
-                    ret.Add(s);
-                }
-            }
-            return ret;
-        }
-        //termina Get Deliverys con restricciones
-
-        //Métodos de Validación
-        public bool TieneNumero (string c)
-        {
-            bool ret = false;
-            string numeros = "0123456789";
-            for (int i = 0 ; i < c.Length && !ret ; i++)
-            {
-               for (int n = 0; n < numeros.Length && !ret ; n++)
-                {
-                    if (c[i].Equals(numeros[n])){
-                        ret = true;
-                    }
-                }
-            }
-            return ret;
-        }
-
-        public bool EsFecha(string f)
-        {
-            bool ret = false;
-            DateTime d;
-            if (DateTime.TryParse(f, out d))
-            {
-                ret = true;
-            }
-            return ret;
-        }
-        //termina Métodos de Validación
-        
-        
-
-        //Stringify Lista de Platos
-        public string MostrarPlatos()
-        {
-            string todosLosPlatos = "";
-            foreach (Plato p in Platos)
-            {
-                todosLosPlatos += $" + {p} {Environment.NewLine}";
-
-            }
-            return todosLosPlatos;
-        }
-        //termina Stringify Lista de Platos
-
-        //Stringify Lista Clientes
-        public string MostrarClientes()
-        {
-            string todosLosClientes = "";
-            foreach (Cliente c in GetClientes())
-            {
-                todosLosClientes += $" + {c} {Environment.NewLine}";
-
-            }
-            return todosLosClientes;
-        }
-        //termina Stringify Lista Clientes
-
-
-        //Stringify de Lista de Deliverys con restricciones
-        public string MostrarDelivery(List<Delivery> deliverys, string del, DateTime d1, DateTime d2)
-        {
-            if (d1 > d2)
-            {
-                DateTime aux = d1;
-                d1 = d2;
-                d2 = aux;
-            }
-
-            string todosLosDelivery = "";
-            foreach (Delivery d in deliverys)
-            {
-                if (del.Equals(d.Repartidor.Nombre) && d.Fecha >= d1 && d.Fecha <= d2)
-                {
-                    todosLosDelivery += $"Delivery:{d} {Environment.NewLine}";
-                }
-            }
-            return todosLosDelivery;
-        }
-        //termina Stringify de Lista de Deliverys con restricciones
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
