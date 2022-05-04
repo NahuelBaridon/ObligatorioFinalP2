@@ -6,55 +6,98 @@ namespace DominioObligatorio
 {
   public class Sistema
     {
-        List<Cliente> Clientes = new List<Cliente>();
+        //Listas
+        List<Persona> Personas = new List<Persona>(); 
         List<Plato> Platos = new List<Plato>();
         List<Mozo> Mozos = new List<Mozo>();
         List<Repartidor> Repartidores = new List<Repartidor>();
         List<Servicio> Servicios = new List<Servicio>();
 
-        
+        // Get de listas
         public List<Cliente> GetClientes() 
         {
-            Clientes.Sort();
-            return Clientes; 
+            List<Cliente> ret = new List<Cliente>();
+            foreach (Persona p in Personas)
+            {
+                if (p is Cliente)
+                {
+                    Cliente aux = p as Cliente;
+                    ret.Add(aux);
+                }
+            }
+            ret.Sort();
+            return ret;
+        }
+
+        public List<Mozo> GetMozos()
+        {
+            List<Mozo> ret = new List<Mozo>();
+            foreach (Persona p in Personas)
+            {
+                if (p is Mozo)
+                {
+                    Mozo aux = p as Mozo;
+                    ret.Add(aux);
+                }
+            }            
+            return ret;
+        }
+
+        public List<Repartidor> GetRepartidores()
+        {
+            List<Repartidor> ret = new List<Repartidor>();
+            foreach (Persona p in Personas)
+            {
+                if (p is Repartidor)
+                {
+                    Repartidor aux = p as Repartidor;
+                    ret.Add(aux);
+                }
+            }
+            return ret;
         }
 
         public List<Plato> GetPlatos() { return Platos; }
-        public List<Mozo> GetMozos() { return Mozos; }
-        public List<Repartidor> GetRepartido() { return Repartidores; }
         public List<Servicio> GetServicios() { return Servicios;}
 
+        public List<Delivery> GetDeliverys()
+        {
+            List<Delivery> ret = new List<Delivery>();
+            foreach (Servicio ser in Servicios)
+            {
+                if (ser is Delivery)
+                {
+                    Delivery aux = ser as Delivery;
+                    ret.Add(aux);
+                }
+            }
+            return ret;
 
+        }
+
+        public List<Local> GetLocales()
+        {
+            List<Local> ret = new List<Local>();
+            foreach (Servicio ser in Servicios)
+            {
+                if (ser is Local)
+                {
+                    Local aux = ser as Local;
+                    ret.Add(aux);
+                }
+            }
+            return ret;
+        }
+        //termina Get de listas
 
         public Sistema()
         {
             PrecargarDatos();
         }
 
-        public bool ModificarPrecioMin(string precio)
-        {
-            int n;
-            bool esNum = Int32.TryParse(precio, out n);
-            if (esNum) 
-            {
-                Int32.Parse(precio);
-                Plato.PrecioMin = Int32.Parse(precio);
-                foreach (Plato p in Platos)
-                {
-                    if (p.Precio < Int32.Parse(precio))
-                    {
-                        p.Precio = Int32.Parse(precio);
-                    }
-                }
-            }
-            return esNum;
-
-        }
-
-
+        //PRECARGA DE DATOS
         private void PrecargarDatos()
         {
-            //PRECARGA DE DATOS
             //clientes
             Cliente cliente1 = new Cliente("alfredo", "Fuentes", "alfredofuentes@gmail.com", "Alfredito123");
             AltaCliente(cliente1);
@@ -84,7 +127,7 @@ namespace DominioObligatorio
             // repartidores 
             Repartidor repartidor1 = new Repartidor("Ernesto", "Perez", Repartidor.Vehiculo.bici);
             AltaRepartidor(repartidor1);
-            Repartidor repartidor2 = new Repartidor("Nicolas", "Varaldo", Repartidor.Vehiculo.apie);
+            Repartidor repartidor2 = new Repartidor("Nicolas", "Varaldo", Repartidor.Vehiculo.a_pie);
             AltaRepartidor(repartidor2);
             Repartidor repartidor3 = new Repartidor("Christian", "Barrios", Repartidor.Vehiculo.moto);
             AltaRepartidor(repartidor3);
@@ -117,10 +160,10 @@ namespace DominioObligatorio
             Plato plato10 = new Plato("Pollo grille", 350);
             AltaPlato(plato10);
 
-
             // termiamos los platos.
 
-            // Servicios
+
+            //Carritos
             List<CantidadPlatos> cantidadPlatos1 = new List<CantidadPlatos>();
             CantidadPlatos cantidadUno = new CantidadPlatos(plato1, 2);
             cantidadPlatos1.Add(cantidadUno);
@@ -181,15 +224,18 @@ namespace DominioObligatorio
             CantidadPlatos cantidadVeinte = new CantidadPlatos(plato8, 3);
             cantidadPlatos10.Add(cantidadVeinte);
 
+            //termina Carritos
+
+            // Servicios
             Delivery s1d = new Delivery(cantidadPlatos1, new DateTime(2021,12,3), cliente1, 1, repartidor1);
             AltaDelivery(s1d);
-            Delivery s2d = new Delivery(cantidadPlatos2, new DateTime(2021,12,8), cliente2, 1, repartidor1);
+            Delivery s2d = new Delivery(cantidadPlatos2, new DateTime(2021,12,8), cliente2, 2.5, repartidor2);
             AltaDelivery(s2d);
-            Delivery s3d = new Delivery(cantidadPlatos3, new DateTime(2021,10,5), cliente3, 1, repartidor3);
+            Delivery s3d = new Delivery(cantidadPlatos3, new DateTime(2021,10,5), cliente3, 5, repartidor2);
             AltaDelivery(s3d);
-            Delivery s4d = new Delivery(cantidadPlatos4, new DateTime(2021,9,6), cliente4, 1, repartidor4);
+            Delivery s4d = new Delivery(cantidadPlatos4, new DateTime(2021,9,6), cliente4, 8, repartidor4);
             AltaDelivery(s4d);
-            Delivery s5d = new Delivery(cantidadPlatos5, new DateTime(2021,8,7), cliente5, 1, repartidor5);
+            Delivery s5d = new Delivery(cantidadPlatos5, new DateTime(2021,8,7), cliente5, 10, repartidor5);
             AltaDelivery(s5d);
             Local s6l = new Local(cantidadPlatos6, new DateTime(2022,1,8), cliente1, 1, mozo1, 6);
             AltaLocal(s6l);
@@ -201,16 +247,16 @@ namespace DominioObligatorio
             AltaLocal(s9l);
             Local s10l = new Local(cantidadPlatos10, new DateTime(2022,5,1), cliente5, 5, mozo5, 5);
             AltaLocal(s10l);
-
-
+            //termina Servicios
 
         }
 
-
+        //Altas
         public Cliente AltaCliente(Cliente c) {
             if (c.EsValido())
             {
-                Clientes.Add(c);
+                Personas.Add(c as Persona);
+                GetClientes().Add(c);
                 return c;
             }
            return null;
@@ -218,7 +264,8 @@ namespace DominioObligatorio
         public Mozo AltaMozo(Mozo m) {
             if (m.EsValido())
             {
-                Mozos.Add(m);
+                Personas.Add(m as Persona);
+                GetMozos().Add(m);
                 return m;
             }
            return null;
@@ -226,7 +273,8 @@ namespace DominioObligatorio
         public Repartidor AltaRepartidor(Repartidor r) {
             if (r.EsValido())
             {
-                Repartidores.Add(r);
+                Personas.Add(r as Persona);
+                GetRepartidores().Add(r);
                 return r;
             }
            return null;
@@ -256,31 +304,32 @@ namespace DominioObligatorio
             }
             return null;
         }
-        public string MostrarPlatos()
+        //termina Altas
+
+
+        
+
+        //Métodos--
+        public bool ModificarPrecioMin(string precio)
         {
-            string todosLosPlatos = "";
-            foreach (Plato p in Platos)
+            int n;
+            bool esNum = Int32.TryParse(precio, out n);
+            if (esNum) 
             {
-                todosLosPlatos += $"id:{p.id} nombre:{p.Nombre} precio:{p.Precio} {Environment.NewLine}";
-
-
-            }
-            return todosLosPlatos;
-        }
-
-        public List<Servicio> GetServiciosDelivery(List<Servicio> ss)
-        {
-            List<Servicio> ret = new List<Servicio>();
-            foreach(Servicio s in ss)
-            {
-                if(s is Delivery)
+                Plato.PrecioMin = Int32.Parse(precio);
+                foreach (Plato p in Platos)
                 {
-                    ret.Add(s);
+                    if (p.Precio < Int32.Parse(precio))
+                    {
+                        p.Precio = Int32.Parse(precio);
+                    }
                 }
             }
-            return ret;
+            return esNum;
+
         }
 
+        //Get Deliverys con restricciones
         public List<Servicio> GetServiciosDelireysMontoEntreFechas(Repartidor r, DateTime f1, DateTime f2)
         {
             if (f1 > f2)
@@ -288,39 +337,22 @@ namespace DominioObligatorio
                 DateTime aux = f1;
                 f1 = f2;
                 f2 = aux;
-
             }
-
 
             List<Servicio> ret = new List<Servicio>();
             foreach (Servicio s in Servicios)
             {
                 if (s is Delivery && s.Fecha > f1 && s.Fecha < f2)
                 {
-                  //  if(s.Cliente && )
-
                     ret.Add(s);
                 }
             }
             return ret;
-
-
         }
-         
+        //termina Get Deliverys con restricciones
 
-            public bool validarPaswword(Cliente c)
-        {
-            bool ret = false;
-            if (c.Password.Length >= 6)
-            {
-              if (tieneNumero(c.Password) && tieneMayuscula(c.Password) && tieneMinuscula(c.Password))
-                  {
-                   ret = true;
-                  }
-            }
-            return ret; 
-        }
-        public bool tieneNumero (string c)
+        //Métodos de Validación
+        public bool TieneNumero (string c)
         {
             bool ret = false;
             string numeros = "0123456789";
@@ -335,88 +367,81 @@ namespace DominioObligatorio
             }
             return ret;
         }
-        private bool tieneMayuscula(string c)
-        {
-            bool ret = false;
-            string minuscula = c.ToLower();
-            if (c != minuscula)
-            {
-                ret = true;
-            }
-            return ret;
-        }
-        private bool tieneMinuscula(string c)
-        {
-            bool ret = false;
-            string mayuscula = c.ToUpper();
-            if (c != mayuscula)
-            {
-                ret = true;
-            }
-            return ret;
-        }
-        public List<Delivery> GetDelivery()
-        {
-            List<Delivery> ret = new List<Delivery>();
-            foreach (Servicio ser in Servicios)
-            {
-                if (ser is Delivery)
-                {
-                    Delivery aux = ser as Delivery;
-                    ret.Add(aux);
-                }
-            }
-           return ret;
-
-        }
 
         public bool EsFecha(string f)
         {
             bool ret = false;
             DateTime d;
-            if(DateTime.TryParse(f, out d))
+            if (DateTime.TryParse(f, out d))
             {
                 ret = true;
             }
             return ret;
         }
-        public string MostrarDelivery(List<Delivery> deliverys, string del, DateTime d1, DateTime d2)
-        {    
-                if (d1>d2)
-                {
-                    DateTime aux = d1;
-                    d1 = d2;
-                    d2 = aux;
-                }
+        //termina Métodos de Validación
+        
+        
 
-                string todosLosDelivery = "";
-                foreach (Delivery d in deliverys)
-                {
-                    if (del.Equals(d.Repartidor.Nombre) && d.Fecha>=d1 && d.Fecha<=d2)
-                    {
-                    todosLosDelivery += $"Delivery:{d} {Environment.NewLine}";
-                    }
-                }
-                return todosLosDelivery;
-            {
-            }
-        }
-
-
-        public List<Local> GetLocal()
+        //Stringify Lista de Platos
+        public string MostrarPlatos()
         {
-            List<Local> ret = new List<Local>();
-            foreach (Servicio ser in Servicios)
+            string todosLosPlatos = "";
+            foreach (Plato p in Platos)
             {
-                if (ser is Local)
+                todosLosPlatos += $" + {p} {Environment.NewLine}";
+
+            }
+            return todosLosPlatos;
+        }
+        //termina Stringify Lista de Platos
+
+        //Stringify Lista Clientes
+        public string MostrarClientes()
+        {
+            string todosLosClientes = "";
+            foreach (Cliente c in GetClientes())
+            {
+                todosLosClientes += $" + {c} {Environment.NewLine}";
+
+            }
+            return todosLosClientes;
+        }
+        //termina Stringify Lista Clientes
+
+
+        //Stringify de Lista de Deliverys con restricciones
+        public string MostrarDelivery(List<Delivery> deliverys, string del, DateTime d1, DateTime d2)
+        {
+            if (d1 > d2)
+            {
+                DateTime aux = d1;
+                d1 = d2;
+                d2 = aux;
+            }
+
+            string todosLosDelivery = "";
+            foreach (Delivery d in deliverys)
+            {
+                if (del.Equals(d.Repartidor.Nombre) && d.Fecha >= d1 && d.Fecha <= d2)
                 {
-                    Local aux = ser as Local;
-                    ret.Add(aux);
+                    todosLosDelivery += $"Delivery:{d} {Environment.NewLine}";
                 }
             }
-            return ret;
-
+            return todosLosDelivery;
         }
+        //termina Stringify de Lista de Deliverys con restricciones
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

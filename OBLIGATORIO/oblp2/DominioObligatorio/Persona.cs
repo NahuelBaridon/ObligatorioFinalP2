@@ -1,26 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace DominioObligatorio
 {
-    public abstract class Persona:IValidacion   
+    public abstract class Persona:IValidacion
     {
-        
-
         public  static int ultimoId{ get; set; }
         public int id { get; set; }
-
         public string Nombre { get; set; }
-
         public string Apellido { get; set; }
 
         public Persona(string nombre, string apellido)
         {
             id = ultimoId;
             ultimoId++;
-            Nombre = nombre.ToLower();
-            Apellido = apellido;
+            Nombre = nombre.ToUpper();
+            Apellido = apellido.ToUpper();
         }
 
         public Persona()
@@ -30,10 +27,11 @@ namespace DominioObligatorio
 
         public override string ToString()
         {
-            return $"Nombre:{Nombre}Apellido:{Apellido}";
+            return $" Apellido: {Apellido} - Nombre: {Nombre} ";
         }
 
-        private bool tieneNumero(string c)
+        //Métodos de Validación
+        public bool TieneNumero(string c)
         {
             bool ret = false;
             string numeros = "0123456789";
@@ -52,8 +50,8 @@ namespace DominioObligatorio
 
         public virtual bool EsValido()
         {
-            return !String.IsNullOrEmpty(Nombre) && !tieneNumero(Nombre) && !tieneNumero(Apellido) && !String.IsNullOrEmpty(Apellido);
+            return !String.IsNullOrEmpty(Nombre) && !TieneNumero(Nombre) && !String.IsNullOrEmpty(Apellido) && !TieneNumero(Apellido);
         }
-
+        //termina Método de Validación
     }
 }

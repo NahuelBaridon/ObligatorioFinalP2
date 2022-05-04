@@ -6,37 +6,30 @@ namespace DominioObligatorio
 {
   public  class Local:Servicio
     {
-        private List<CantidadPlatos> Platos { get; set; }
+        
         public int NroMesa { get; set; }
         public Mozo Mozo { get; set; }
         public int Comenzales { get; set; }
         public static double PrecioCubierto { get; set; } = 5; //preguntar 
 
-        public Local(List<CantidadPlatos> platos, DateTime fecha, Cliente cliente,int nroMeza,Mozo mozo,int comenzales) : base(fecha, cliente)
+        public Local(List<CantidadPlatos> platos, DateTime fecha, Cliente cliente,int nroMeza,Mozo mozo,int comenzales) : base(platos, fecha, cliente)
         {
             NroMesa = nroMeza;
             Mozo = mozo;
             Comenzales = comenzales;
-           
         }
+           
         public Local()
         {
 
         }
 
-
         public override string ToString()
         {
-            return $"Orden:{Platos} Fecha:{Fecha.ToString("yyyy-MM-dd")} Cliente:{Cliente} Mesa:{NroMesa} Mozo:{Mozo} Comenzals:{Comenzales}";
+            return $" {Environment.NewLine} Platos: {MostrarPlatos(getCarrito())} {Environment.NewLine} Precio: {"$" + calcularPrecio()} - Fecha: {Fecha.ToString("yyyy-MM-dd")}{Environment.NewLine} Cliente: {Cliente} - Mesa: {NroMesa} - Comenzales: {Comenzales} {Environment.NewLine} Mozo: {Mozo}";
         }
-
-        public List<CantidadPlatos> getCarrito()
-        {
-            return Platos;
-        }
-
-
-
+        
+        //Metodo de calculo
         public override double calcularPrecio()
         {
             double precioCubierto = PrecioCubierto*Comenzales;
@@ -49,14 +42,19 @@ namespace DominioObligatorio
                
             }
             return precio*1.1;
-
         }
+        //termina Metodo de calculo
 
-        
 
+        //Metodo de Validación
         public override bool EsValido()
         {
-            return base.EsValido() && !Mozo.Equals(null) && Comenzales > 0;
+            return base.EsValido() && getCarrito().Count>0 && !Mozo.Equals(null) && Comenzales > 0;
         }
+        //termina Metodo de Validación
+
     }
 }
+
+
+

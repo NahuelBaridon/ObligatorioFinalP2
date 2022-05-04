@@ -7,7 +7,7 @@ namespace DominioObligatorio
    public class Repartidor:Persona
     {
         public Vehiculo Tipovehiculo { get; set; }
-        public enum Vehiculo { moto =0, bici=1, apie=2 }
+        public enum Vehiculo { moto, bici, a_pie }
 
         public Repartidor(string nombre, string apellido, Vehiculo tipovehiculo) : base(nombre, apellido)
         {
@@ -20,30 +20,21 @@ namespace DominioObligatorio
 
         public override string ToString()
         {
-            return $"Nombre:{Nombre}Apellido:{Apellido} Vehículo:{Tipovehiculo}";
+            return $" Apellido: {Apellido} - Nombre: {Nombre} - Vehículo: {Tipovehiculo}";
         }
 
-        public bool EnumValido(int  v)
-        {
-            bool ret = false;
-            if(v.Equals((int)Vehiculo.apie) || v.Equals((int)Vehiculo.moto)|| v.Equals((int)Vehiculo.bici))
-            {
-                ret = true;
-            }
-            return ret;
-        }
-
+        //Metodo de Validación
         public override bool EsValido()
         {
-
-            return base.EsValido() && EnumValido((int)Tipovehiculo);
+            return base.EsValido();
         }
-
-
-
-
-
-
+        //termina Metodo de Validación
     }
 }
+
+
+
+
+
+
     

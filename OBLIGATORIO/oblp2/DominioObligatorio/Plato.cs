@@ -12,7 +12,6 @@ namespace DominioObligatorio
         public string Nombre { get; set; }
         public double Precio { get; set; }
         
-
         public Plato(string nombre, double precio)
         {
             id = ultimoId;
@@ -26,18 +25,21 @@ namespace DominioObligatorio
         {
 
         }
+
         public override string ToString()
         {
-            return $" Nombre:{Nombre} Precio:{Precio}";
+            return $" id: {id} - Nombre: {Nombre} - Precio: {"$" + Precio}";
         }
 
+        //Metodo de Validación
         public bool EsValido()
         {
             return !String.IsNullOrEmpty(Nombre) && Precio >=PrecioMin;
         }
-
-       
-        
+        //termina Metodo de Validación
 
     }
 }
+       
+        
+

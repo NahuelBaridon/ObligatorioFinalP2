@@ -21,19 +21,16 @@ namespace DominioObligatorio
 
         public override string ToString()
         {
-            return $"Nombre:{Nombre}Apellido:{Apellido} NroFuncionario:{NroFuncionario}";
+            return $" Nombre: {Nombre} - Apellido: {Apellido} - NroFuncionario: {NroFuncionario}";
         }
 
-        
-
+        //Metodo de Validación
         public override bool EsValido()
         {
-
             return base.EsValido() &&  !NroFuncionario.Equals(null);
-        } 
-
-
-
+        }
+        //termina Metodo de Validación
 
     }
 }
+
