@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DominioObligatorio
 {
-    public abstract class Persona:IValidacion
+    public abstract class Persona:IValidacion, IComparable<Persona>
     {
         public  static int ultimoId{ get; set; }
         public int id { get; set; }
@@ -53,5 +53,35 @@ namespace DominioObligatorio
             return !String.IsNullOrEmpty(Nombre) && !TieneNumero(Nombre) && !String.IsNullOrEmpty(Apellido) && !TieneNumero(Apellido);
         }
         //termina Método de Validación
+
+        //Criterio de Ordenación
+        public int CompareTo([AllowNull] Persona other)
+        {
+            if (Apellido.CompareTo(other.Apellido) > 0)
+            {
+                return 1;
+            }
+            else if (Apellido.CompareTo(other.Apellido) < 0)
+            {
+                return -1;
+            }
+            else
+            {
+                if (Nombre.CompareTo(other.Nombre) > 0)
+                {
+                    return 1;
+                }
+                else if (Nombre.CompareTo(other.Nombre) < 0)
+                {
+                    return -1;
+                }
+                else
+                {
+                    return 0;
+
+                }
+            }
+        }
+        //termina Criterio de Ordenación
     }
 }

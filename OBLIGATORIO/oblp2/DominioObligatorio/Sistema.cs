@@ -15,6 +15,7 @@ namespace DominioObligatorio
         public List<Cliente> GetClientes() 
         {
             List<Cliente> ret = new List<Cliente>();
+            Personas.Sort();
             foreach (Persona p in Personas)
             {
                 if (p is Cliente)
@@ -23,13 +24,13 @@ namespace DominioObligatorio
                     ret.Add(aux);
                 }
             }
-            ret.Sort();
             return ret;
         }
 
         public List<Mozo> GetMozos()
         {
             List<Mozo> ret = new List<Mozo>();
+            Personas.Sort();
             foreach (Persona p in Personas)
             {
                 if (p is Mozo)
@@ -44,6 +45,7 @@ namespace DominioObligatorio
         public List<Repartidor> GetRepartidores()
         {
             List<Repartidor> ret = new List<Repartidor>();
+            Personas.Sort();
             foreach (Persona p in Personas)
             {
                 if (p is Repartidor)

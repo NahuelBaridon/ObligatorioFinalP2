@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace DominioObligatorio
 {
-    public class Cliente : Persona,IComparable<Cliente>
+    public class Cliente : Persona
     {
         public string Email { get; set; }
         public string Password { get; set; }
@@ -89,34 +89,6 @@ namespace DominioObligatorio
         }
         //termina Métodos de Validación
 
-        //Criterio de Ordenación
-        public int CompareTo([AllowNull] Cliente other)
-        {
-            if (Apellido.CompareTo(other.Apellido) > 0)
-            {
-                return 1;
-            }
-            else if (Apellido.CompareTo(other.Apellido) < 0)
-            {
-                return -1;
-            }
-            else
-            {
-                if (Nombre.CompareTo(other.Nombre) > 0)
-                {
-                    return 1;
-                }
-                else if (Nombre.CompareTo(other.Nombre) < 0)
-                {
-                    return -1;
-                }
-                else
-                {
-                    return 0;
-
-                }
-            }
-        }
-        //termina Criterio de Ordenación
+        
     }
 }
